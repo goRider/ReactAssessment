@@ -19,23 +19,34 @@ class App extends Component {
 
   render() {
     //console.log(this.state.customer)
+    let dollarAmount = 99;
     return (
       <div className="App">
         <Customer customers={this.state.customers} />
-        <h1>{calculateRewardPoint(120)}</h1> 
+        <h1>{calcRewardPtHundred(dollarAmount) + calcRewardPtOverFifty(dollarAmount)}</h1> 
       </div>
     );
   }
 }
 
-function calculateRewardPoint(dollar) {
+function calcRewardPtHundred(dollar) {
   // console.log(dollar)
-  if (dollar >= 100) {
-    let sum = 3;
-    console.log("2 points");
-    return sum;
+  if (dollar > 100) {
+    let remainingHundDollar = (dollar - 100) * 2;
+    return remainingHundDollar;
   } else {
-    console.log("No points");
+    let result = 0;
+    return result;
+  }
+}
+
+function calcRewardPtOverFifty(dollar) {
+  if (dollar > 50) {
+    let remainingFiftyDollar = (dollar - 50);
+    return remainingFiftyDollar;
+  } else {
+    let result = 0;
+    return result;
   }
 }
 
